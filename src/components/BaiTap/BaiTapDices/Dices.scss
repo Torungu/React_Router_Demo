@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Pony";
+  src: url(./../../../assets/fonts/Pony.ttf);
+}
+.baiTap2 {
+  font-family: Pony;
+  @apply text-center h-screen p-10;
+  background-image: url(../../../assets/img/bgGame.png);
+}
+.dices {
+  @apply mt-5;
+}
+.result {
+  @apply mt-5 text-3xl;
+}
+.btn-dices {
+  @apply text-white p-5 text-xl border-2 border-green-600 rounded-md w-32 h-32 bg-purple-600;
+}

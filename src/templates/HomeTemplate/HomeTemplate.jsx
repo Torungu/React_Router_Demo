@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { Outlet, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 const { Header, Content, Footer } = Layout;
 // const items = new Array(3).fill(null).map((_, index) => ({
 //   key: String(index + 1),
 //   label: `nav ${index + 1}`,
 // }));
 const HomeTemplate = () => {
+  const { hoTen } = useSelector((state) => state.userSlice);
   const arrNavLink = [
     {
       to: "/",
@@ -15,6 +17,22 @@ const HomeTemplate = () => {
     {
       to: "/bai-tap-pokemon",
       content: "Pokemon Lists",
+    },
+    {
+      to: "/demo-redux",
+      content: "Demo Redux",
+    },
+    {
+      to: "/dices",
+      content: "Dices",
+    },
+    {
+      to: "/demoUseEffect",
+      content: "useEffect",
+    },
+    {
+      to: "/demoUseEffect",
+      content: "useEffect",
     },
   ];
   const {
@@ -33,20 +51,24 @@ const HomeTemplate = () => {
         }}
       >
         <div className="demo-logo" />
-        {arrNavLink.map((item, index) => {
-          return (
-            <NavLink
-              className={(isActive) => {
-                console.log(isActive);
-                return `mx-4 ${isActive ? "text-red-500" : "text-white"}`;
-              }}
-              to={item.to}
-              key={index}
-            >
-              {item.content}
-            </NavLink>
-          );
-        })}
+        <div>
+          {arrNavLink.map((item, index) => {
+            return (
+              <NavLink
+                className={(isActive) => {
+                  // console.log(isActive);
+                  return `mx-4 ${isActive ? "text-red-500" : "text-white"}`;
+                }}
+                to={item.to}
+                key={index}
+              >
+                {item.content}
+              </NavLink>
+            );
+          })}
+        </div>
+        <div className="text-white uppercase ">{hoTen}</div>
+
         {/* <Menu
           theme="dark"
           mode="horizontal"
