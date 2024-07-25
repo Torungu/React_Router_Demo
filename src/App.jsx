@@ -5,9 +5,27 @@ import HomeTemplate from "./templates/HomeTemplate/HomeTemplate";
 import Page404 from "./components/Page404/Page404";
 import PokemonDetail from "./components/BaiTap/PokemonDetail";
 import useRouteCustom from "./routes/useRouteCustom";
+import { message } from "antd";
+import React from "react";
+export const NotificationContext = React.createContext();
+
 function App() {
+  const [messageApi, contextHolder] = message.useMessage();
   const routes = useRouteCustom();
-  return routes;
+  const handleNotification = (status, content) => {
+    messageApi.open({
+      type: status,
+      content,
+    });
+  };
+  return (
+    <>
+      <NotificationContext.Provider value={{ handleNotification }}>
+        {contextHolder}
+        {routes}
+      </NotificationContext.Provider>
+    </>
+  );
   // <>
   //   <Routes>
   //     <Route path="/hien-thi-iphone" element={<BaiTapHienThiDienThoai />} />

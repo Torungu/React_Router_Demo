@@ -30,10 +30,6 @@ const HomeTemplate = () => {
       to: "/demoUseEffect",
       content: "useEffect",
     },
-    {
-      to: "/demoUseEffect",
-      content: "useEffect",
-    },
   ];
   const {
     token: { colorBgContainer, borderRadiusLG },

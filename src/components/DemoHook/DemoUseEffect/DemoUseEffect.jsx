@@ -1,9 +1,10 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { NotificationContext } from "../../../App";
 
 const DemoUseEffect = () => {
+  const data = useContext(NotificationContext);
   const [listShoe, setListShoe] = useState([]);
   useEffect(() => {
     // console.log("useEffect");
@@ -16,6 +17,7 @@ const DemoUseEffect = () => {
         // console.log(res.data.content);
       })
       .catch((err) => console.log(err));
+    data.handleNotification("error", "Hello");
   }, []);
   console.log(listShoe);
   //   console.log("Demo Component Hook");
@@ -29,7 +31,7 @@ const DemoUseEffect = () => {
       <div className="grid grid-cols-4">
         {listShoe.map((item, index) => {
           return (
-            <div className="col" key={index}>
+            <div key={index}>
               <img src={item.image} alt="" width={100} />
               <h3>{item.name}</h3>
               <p>Price {item.price}</p>
