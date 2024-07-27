@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { NotificationContext } from "../../../App";
@@ -19,15 +19,25 @@ const DemoUseEffect = () => {
       .catch((err) => console.log(err));
     data.handleNotification("error", "Hello");
   }, []);
-  console.log(listShoe);
+  // console.log(listShoe);
   //   console.log("Demo Component Hook");
   function render() {
     // console.log("Demo Render Hook");
-    return <p>HELLU</p>;
+    return <p>{listShoe && listShoe[0]?.name}</p>;
   }
+  const [number, setNumber] = useState("");
+  const funtionCallBack = useCallback(render, [number]);
+
   return (
     <div>
-      {/* {render()} */}
+      {funtionCallBack()}
+      <input
+        type="text"
+        placeholder="random number"
+        onChange={(e) => {
+          setNumber(e.target.value);
+        }}
+      />
       <div className="grid grid-cols-4">
         {listShoe.map((item, index) => {
           return (

@@ -10,6 +10,7 @@ import DemoRedux from "../components/DemoRedux/DemoRedux.jsx";
 import Dices from "../components/BaiTap/BaiTapDices/Dices.jsx";
 import DemoUseEffect from "../components/DemoHook/DemoUseEffect/DemoUseEffect.jsx";
 import DemoUseEffectDetail from "../components/DemoHook/DemoUseEffect/DemoUseEffectDetail.jsx";
+import DemoFormReact from "../components/DemoFormReact/DemoFormReact.jsx";
 
 const useRouteCustom = () => {
   const elements = useRoutes([
@@ -44,6 +45,10 @@ const useRouteCustom = () => {
         {
           path: path.demoUseEffectDetail,
           element: <DemoUseEffectDetail />,
+        },
+        {
+          path: "/demo-form-react",
+          element: <DemoFormReact />,
         },
       ],
     },
